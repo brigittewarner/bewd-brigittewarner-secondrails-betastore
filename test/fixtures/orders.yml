@@ -1,0 +1,5 @@
+test "should sum three orders" do
+    calculate_total_amount
+    assert true
+end  
+

@@ -1,0 +1,16 @@
+<table>
+	<h1>Product <%= @product.id %></h1>
+	<tr>
+		<th>ID</th>
+		<td><%= @product.id %></td>
+		<th>Name</th>
+		<td><%= @product.name %></td>
+		<th>Price</th>
+		<td><%= number_to_currency @product.price %></td>
+		<th>Created</th>
+		<td><%= time_ago_in_words @product.created_at %> ago on</td>,
+		<td><%= @product.created_at.strftime('%m/%d/%Y') %></td>
+		<td><%= image_tag @product.image_url, alt: @product.image_url %></td>
+	</tr>
+</table>
+<%= link_to "back to products", admin_products_path %>
