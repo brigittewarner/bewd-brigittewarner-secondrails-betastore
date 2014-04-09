@@ -4,11 +4,11 @@ class CreditCard < ActiveRecord::Base
 	before_validation :normalize_card_number
 
 	validates :customer_id, presence: true
-	validate :card_number,
+	validates :card_number,
 		presence: true
-		format:{with: /\A\d{15,15}\z/, allow_blank: true}
+		format: { with: /\A\d{15,15}\z/, allow_blank: true}
 
-	validate :validate_expiration_date
+	validates :validate_expiration_date
 
 	def normalize_card_number
 		if card_number.present?
