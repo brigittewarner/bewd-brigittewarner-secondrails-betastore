@@ -6,7 +6,7 @@ class CreditCard < ActiveRecord::Base
 	validates :customer_id, presence: true
 	validate :card_number,
 		presence: true
-		format: { with: /\A\d{15,15}\z/, allow_blank: true }
+		format:{ with: /\A\d{15,15}\z/, allow_blank: true }
 
 	validate :validate_expiration_date
 
@@ -14,9 +14,6 @@ class CreditCard < ActiveRecord::Base
 		if card_number.present?
 		self.card_number = card_number.gsub(/\D/,' ')
 	end
-end
-
-
 
 	def expires_at
 		@expires_at ||= Date.strptime(expiration_date, '%m/%Y') + 1.month
