@@ -21,6 +21,7 @@ class CreditCard < ActiveRecord::Base
 		if expiration_date.blank?
 			errors.add(:expiration_date, 'is required')
 		elsif expiration_date
+	end
 
 	def expiry=(expiry)
 		self.expires_on = Date.strptime(expiry, '%m/%y')+1.month
