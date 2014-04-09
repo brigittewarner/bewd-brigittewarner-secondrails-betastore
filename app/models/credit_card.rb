@@ -12,6 +12,7 @@ class CreditCard < ActiveRecord::Base
 		if card_number.present?
 		self.card_number = card_number.gsub(/\D/,' ')
 	end
+	end
 
 	def expires_at
 		@expires_at ||= Date.strptime(expiration_date, '%m/%Y') + 1.month
@@ -21,6 +22,7 @@ class CreditCard < ActiveRecord::Base
 		if expiration_date.blank?
 			errors.add(:expiration_date, 'is required')
 		elsif expiration_date
+		end
 	end
 
 	def expiry=(expiry)
