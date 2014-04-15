@@ -10,7 +10,7 @@ journal = Product.create(name: 'journal', price: '5.99', image_url: '/images/pro
 sticker = Product.create(name: 'sticker', price: '0.99', image_url: '/images/products/sticker.jpg', categories: [swag])
 coffee_mug = Product.create(name: 'coffee_mug', price: '8.99', image_url: '/images/products/coffee_mug.jpg', categories: [swag])
 
-
+brigittewarner = User.create!(email: 'mail@brigittewarner.com', password: 'secret')
 
 
 

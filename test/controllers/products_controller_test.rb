@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
 
-	def test_manage
+def test_manage
 	visit "/admin/products"
 	click_on "New Product"
 	fill_in "Name", with: "Awesome"
@@ -23,6 +23,4 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
 	refute page.has_content('Awesome')
 end
-end
-
 end
