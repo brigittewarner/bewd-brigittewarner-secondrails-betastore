@@ -6,8 +6,13 @@ Betastore::Application.routes.draw do
   	post '/login' => 'logins#create'
   end
   	resources :subscriptions
-  	
-    get '/products' => 'products#index', as: 'products'
+  	resources :customers
+    resources :products
+
+    get '/sign_up' => 'customers#new', as: 'sign_up'
+    post '/sign_up' => 'customers#create'
+
+    get '/verify/:token' => 'customers#verify', as: 'verify_customer'
 
     root :to  => 'subscriptions#new'
 end

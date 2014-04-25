@@ -1,6 +1,23 @@
-<h1>This is a list of products!</h1>
-<ul>
-	<% for product in @products %>
-		<li><%= product.name %></li>
+<div class="row">
+	<%= form_tag({}, method: 'get', role: 'form', class: 'form-inline') do %>
+		<div class="form-group col-sm-3">
+			<%= text_field_tag :q, params[:q], class: 'form-control col-sm-2' %>
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
 	<% end %>
-</ul>
+	<% unless params[:q].blank? %>
+	<div>
+		<%= link_to "Back to Products", products_path, :class => "btn btn-primary" %>
+	</div>
+	<% end %>
+</div>
+
+<% for product in @products %>
+	<div class="col-sum-4">
+		<%= link_to product do %>
+		<%= image_tag product.image_url, width: 200 %>
+		<br/>
+		<%= product.name %>
+	<% end %>
+	</div>
+<% end %>
