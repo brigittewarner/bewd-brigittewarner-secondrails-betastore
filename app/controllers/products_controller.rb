@@ -1,11 +1,14 @@
 class ProductsController < ApplicationController
 	def index
-		@products = Product.order('name')
+		@products = Product.order('name').limit(100)
 
-		if params[:q].present?
-			@products = @products.search(params[:q])
+		for param in %i[search min_price max_price]
+			if params[param].present?
+			@products = @products.send(param, params[param])
 		end
 	end
+
+end
 
 	def show
 		@product = Product.find(params[:id])

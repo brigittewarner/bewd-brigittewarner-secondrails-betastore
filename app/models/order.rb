@@ -3,6 +3,17 @@ class Order < ActiveRecord::Base
   has_many :line_items
   has_many :products, :through => :line_items
 
+  def self.from_cart(cart)
+    order = new
+    cart.each do |product_id, quantity|
+      order.line_items.build(
+          product_id: product_id,
+          quantity: quantity
+        )
+    end
+    order
+  end
+
   def calculate_total_amount
   	self.total_amount = line_items.inject(0) do |sum, li|
   		sum + li.total_price

@@ -43,6 +43,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'faker'
 
+gem 'pg_search'
+
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'brakeman', require: false

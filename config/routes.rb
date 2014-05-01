@@ -8,11 +8,15 @@ Betastore::Application.routes.draw do
   	resources :subscriptions
   	resources :customers
     resources :products
+    resource :cart
+    resources :orders
 
     get '/sign_up' => 'customers#new', as: 'sign_up'
     post '/sign_up' => 'customers#create'
 
     get '/verify/:token' => 'customers#verify', as: 'verify_customer'
+
+    post "/products/:id/add_to_cart" => "carts#create", as: 'add_product_to_cart'
 
     root :to  => 'subscriptions#new'
 end
