@@ -49,6 +49,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'brakeman', require: false
 
+gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -20,9 +20,7 @@ protected
 		session[:customer_id] = customer.try(:id)
 	end
 
-		def cart
+	helper_method def cart
 		session[:cart] ||= Hash.new(0)
-		redirect_to cart_path,
-		info: "product #{params[:product_id]} was added to your cart"
 	end
 end

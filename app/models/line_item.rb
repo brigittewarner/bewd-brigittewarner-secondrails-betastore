@@ -1,19 +1,22 @@
 class LineItem < ActiveRecord::Base
-  belongs_to :order
+  belongs_to :order, inverse_of: :line_items
   belongs_to :product
 
-	before_validation :set_price
-	after_save :increment_order_total_amount
+  before_save :set_unit_price
+  after_save :increment_order_total_amount
 
-	def set_price
-		self.price = product.price
-	end
+  validates :order, :product_id, presence: true
+  validates :quantity, presence: true, numericality: { greater_than: 0, allow_blank: true }
 
-	def total_price
-		price * quantity
-	end
+  def set_unit_price
+    self.unit_price = product.price
+  end
 
-	def increment_order_total_amount
-		order.increment_total_amount(total_price)
-	end
+  def total_price
+    unit_price * quantity
+  end
+
+  def increment_order_total_amount
+    order.increment_total_amount(total_price)
+  end
 end

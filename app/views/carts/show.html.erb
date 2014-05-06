@@ -1,0 +1,11 @@
+<h1>Your Cart</h1>
+
+<% if cart.present? %>
+  <%= render 'orders/order' %>
+
+  <p>
+    <%= link_to "Checkout", new_order_path, class: 'btn btn-success' %>
+  </p>
+<% else %>
+  <em>Your cart is empty</em>
+<% end %>

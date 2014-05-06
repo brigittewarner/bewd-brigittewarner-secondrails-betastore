@@ -8,19 +8,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="container-fluid">
+<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="/">
 		<%= image_tag 'icon.png', height: 20 %>
 		</a>
 	</div>
 
 	<ul class="nav navbar-nav navbar-right">
+		<li>
+			<%= link_to cart_path do %>
+			<span class="glyphicon glyphicon-shopping-cart"></span>
+			Cart
+			<% end %>
+		</li>
 		<% if logged_in? %>
-			<li><%= link_to current_customer.name, "#TODO" %></li>
-			<li><%= link_to "Log Out", "#TODO" %></li>
-		<% else %>
-			<li><%= link_to "Log In", "#TODO" %></li>
+			<li>
+				<%= link_to "#TODO" do %>
+				<span class="glyphicon glyphicon-user"></span>
+				<%= current_customer.name %>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to log_in_path, method: 'delete' do %>
+				<span class="glyphicon glyphicon-log-out"></span>
+				Log Out
+				<% end %>
+			</li>
+			<% else %>
+			<li>
+				<%= link_to log_in_path do %>
+				<span class="glyphicon glyphicon-log-in"></span>
+				Log In
+				<% end %>
+			</li>
 			<li><%= link_to "Sign Up", sign_up_path %></li>
 		<% end %>
 	</ul>
